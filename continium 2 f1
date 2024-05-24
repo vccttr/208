@@ -1,0 +1,35 @@
+def crash_function():
+pygame.mixer.music.stop()
+pygame.mixer.Sound.play(audio_crash)
+message_display_screen("YOU CRASHED", 0, 0, red_color, 0)
+while True:
+playAgain = button("Play Again", btn_starting_x, nw_gm_y, btn_width, btn_height, greenLight_color, green_color)
+exit_game = button("Quit", btn_starting_x, exit_y, btn_width, btn_height, redLight_color, red_color)
+for event in pygame.event.get():
+if event.type == pygame.QUIT or exit_game == 1 or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
+pygame.quit()
+quit()
+if playAgain== 1 or (event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE):
+looping_gameplay()
+pygame.display.update()
+time_clock.tick(15)
+def welcome_gameplay():
+welcome = True
+game_layout_display.fill(white_color)
+title_msg()
+exit_game=0
+while welcome:
+for event in pygame.event.get():
+if event.type == pygame.QUIT or exit_game == 1 or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
+pygame.quit()
+quit()
+playGame = button("New game", btn_starting_x, nw_gm_y, btn_width, btn_height, greenLight_color, green_color)
+exit_game = button("Quit", btn_starting_x, exit_y, btn_width, btn_height, redLight_color, red_color)
+if event.type == pygame.KEYDOWN:
+if event.key == pygame.K_ESCAPE:
+exit_game = 1
+if playGame or (event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE):
+welcome = False
+
+pygame.display.update()
+time_clock.tick(15)  
